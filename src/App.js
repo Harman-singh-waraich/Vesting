@@ -1,11 +1,13 @@
 import { ConnectWallet,useAddress } from "@thirdweb-dev/react";
 import { useState } from "react";
+import {vestingManagerAddress,vestingManager,vesting,token} from "./contract"
 import "./styles/App.css";
 
 export default function App() {
   const [placeholders, setPlaceholders] = useState(["Address 1"]);
   const address = useAddress();
   console.log(address);
+  
   //add address field
   const addAddress = () => {
     if (placeholders.length === 12) return;
