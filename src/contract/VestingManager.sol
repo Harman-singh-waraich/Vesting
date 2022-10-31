@@ -6,7 +6,7 @@ import "./Vesting.sol";
 /**
  * @title VestingManager
  * @dev This contract handles the creation of Vestings and keep tracks of Vesting Ids.
- *https://goerli.etherscan.io/address/0xB2797B2EeA8c19B301A90Ee0C4D6bCEe41941837#code
+ *https://goerli.etherscan.io/address/0x0c559c0EAaa1dC52e9bF2d5A9F43cd4Ce6e1Ab0a#code
  */
 contract VestingManager{
     

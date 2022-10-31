@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
@@ -12,6 +15,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "^5.0.1",
+    "react-toastify": "^9.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
     "assert": "^2.0.0",
     "react-app-rewired": "^2.2.1",
     "stream": "^0.0.2"

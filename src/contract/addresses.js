@@ -1,5 +1,5 @@
 // This address points to a dummy ERC-20 contract. Replace it with your own smart contracts.
 const addresses = {
-  vestingManagerAddress: "0xB2797B2EeA8c19B301A90Ee0C4D6bCEe41941837", //goerli
+  vestingManagerAddress: "0x0c559c0EAaa1dC52e9bF2d5A9F43cd4Ce6e1Ab0a", //goerli
 };
 export default addresses;
