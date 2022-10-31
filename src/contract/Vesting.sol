@@ -35,12 +35,12 @@ contract Vesting is Context {
     XYZToken private immutable _token;
     uint256 private _released;
     uint256 private _totalAllocation;
+    uint256 private immutable _start;
+    uint256 private immutable _duration;
     mapping(address => uint256) private _erc20Released;
     mapping(address => bool) private _isBeneficiary;
     address private _beneficiary;
     address[] private _beneficiaries;
-    uint256 private immutable _start;
-    uint256 private immutable _duration;
 
     /**
      * @dev Set the beneficiary, start timestamp and vesting duration of the vesting wallet.
@@ -81,7 +81,7 @@ contract Vesting is Context {
         return  address(_token);
     }
 
-    /**
+   /**
      * @dev Getter for the beneficiary address.
      */
     function isBeneficiary(address _address)
@@ -91,7 +91,31 @@ contract Vesting is Context {
         returns (bool)
     {
         return _isBeneficiary[_address];
-    }
+    } 
+
+   /**
+     * @dev Getter for the beneficiaries.
+     */
+    function beneficiaries()
+        public
+        view
+        virtual
+        returns (address [] memory)
+    {
+        return _beneficiaries;
+    } 
+
+   /**
+     * @dev Getter for the total number of beneficiaries.
+     */
+    function beneficiaryCount()
+        public
+        view
+        virtual
+        returns (uint)
+    {
+        return _beneficiaries.length;
+    } 
 
     /**
      * @dev Getter for the start timestamp.
@@ -155,7 +179,7 @@ contract Vesting is Context {
      * an asset given its total historical allocation.
      */
     function _vestingSchedule( uint256 timestamp)
-        public
+        internal
         view
         virtual
         returns (uint256)
