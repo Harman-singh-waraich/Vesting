@@ -6,13 +6,12 @@ import {
 } from "@thirdweb-dev/react";
 import { useState } from "react";
 import { addresses, abis } from "../contract";
-import { styled } from "@mui/material/styles";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import LinearProgress from '@mui/material/LinearProgress';
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import "../styles/VestingData.css";
 import { ethers } from "ethers";
@@ -55,6 +54,10 @@ export default function VestingData() {
   const { data: tokenAddress, isLoading: isLoadingToken } = useContractRead(
     vestingContract,
     "token"
+  );
+  const { data: beneficiaryCount, isLoading: isLoadingCount } = useContractRead(
+    vestingContract,
+    "beneficiaryCount"
   );
   const { contract: xyztoken } = useContract(tokenAddress, token);
   const { data: balance, isLoading: isLoadingBalance } = useContractRead(
@@ -114,7 +117,7 @@ export default function VestingData() {
                 onChange={handleChange}
               >
                 {isLoadingIDs ? (
-                  <div>Loading...</div>
+                  <div><LinearProgress/></div>
                 ) : (
                   IDs.map((address) => {
                     return (
@@ -128,30 +131,39 @@ export default function VestingData() {
               </Select>
             </FormControl>
 
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                {vestingId == "" ? (
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                {vestingId === "" ? (
                   <></>
                 ) : isLoadingStart ? (
-                  <div>Loading...</div>
+                  <div><LinearProgress/></div>
                 ) : (
                   <p>Start {new Date(start.toNumber()).toUTCString()}</p>
                 )}
               </Grid>
               <Grid item xs={6}>
-                {vestingId == "" ? (
+                {vestingId === "" ? (
                   <></>
                 ) : isLoadingStart ? (
-                  <div>Loading...</div>
+                  <div><LinearProgress/></div>
+                ) : (
+                  <p>Beneficiaries : {beneficiaryCount}</p>
+                )}
+              </Grid>
+              <Grid item xs={6}>
+                {vestingId === "" ? (
+                  <></>
+                ) : isLoadingStart ? (
+                  <div><LinearProgress/></div>
                 ) : (
                   <p>Duration : 12 months</p>
                 )}
               </Grid>
               <Grid item xs={6}>
-                {vestingId == "" ? (
+                {vestingId === "" ? (
                   <></>
                 ) : isLoadingReleased ? (
-                  <div>Loading...</div>
+                  <div><LinearProgress/></div>
                 ) : (
                   <p>
                     Released :{" "}
@@ -163,10 +175,10 @@ export default function VestingData() {
                 )}
               </Grid>
               <Grid item xs={6}>
-                {vestingId == "" ? (
+                {vestingId === "" ? (
                   <></>
                 ) : isLoadingBalance ? (
-                  <div>Loading...</div>
+                  <div><LinearProgress/></div>
                 ) : (
                   <p>
                     Your Balance :{" "}
@@ -179,10 +191,10 @@ export default function VestingData() {
             </Grid>
           </Box>
         </form>
-        {vestingId == "" ? (
+        {vestingId === "" ? (
           <></>
         ) : isLoadingBalance ? (
-          <div>Loading...</div>
+          <div><LinearProgress/></div>
         ) : (
           <Web3Button
             contractAddress={vestingId}
