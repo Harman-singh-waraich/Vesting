@@ -136,7 +136,7 @@ export default function VestingData() {
                 {vestingId === "" ? (
                   <></>
                 ) : isLoadingStart ? (
-                  <div><LinearProgress/></div>
+                  <div>loading</div>
                 ) : (
                   <p>Start {new Date(start.toNumber()).toUTCString()}</p>
                 )}
@@ -145,16 +145,16 @@ export default function VestingData() {
                 {vestingId === "" ? (
                   <></>
                 ) : isLoadingStart ? (
-                  <div><LinearProgress/></div>
+                  <div>loading</div>
                 ) : (
-                  <p>Beneficiaries : {beneficiaryCount}</p>
+                  <p>Beneficiaries : {beneficiaryCount.toNumber()}</p>
                 )}
               </Grid>
               <Grid item xs={6}>
                 {vestingId === "" ? (
                   <></>
                 ) : isLoadingStart ? (
-                  <div><LinearProgress/></div>
+                  <div>loading</div>
                 ) : (
                   <p>Duration : 12 months</p>
                 )}
@@ -163,7 +163,7 @@ export default function VestingData() {
                 {vestingId === "" ? (
                   <></>
                 ) : isLoadingReleased ? (
-                  <div><LinearProgress/></div>
+                  <div>loading</div>
                 ) : (
                   <p>
                     Released :{" "}
@@ -178,7 +178,7 @@ export default function VestingData() {
                 {vestingId === "" ? (
                   <></>
                 ) : isLoadingBalance ? (
-                  <div><LinearProgress/></div>
+                  <div>loading</div>
                 ) : (
                   <p>
                     Your Balance :{" "}
@@ -194,7 +194,7 @@ export default function VestingData() {
         {vestingId === "" ? (
           <></>
         ) : isLoadingBalance ? (
-          <div><LinearProgress/></div>
+          <div>loading</div>
         ) : (
           <Web3Button
             contractAddress={vestingId}
